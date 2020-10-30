@@ -14,22 +14,22 @@ import retrofit2.Response
  * into the view created for the purpose
  */
 
-class CommentsViewModel(private val repository: Repository): ViewModel() {
+class CommentsViewModel(private val repository: Repository) : ViewModel() {
 
-    var myResponse: MutableLiveData<Response<Post>> = MutableLiveData()
-    var commentsResponse: MutableLiveData<Response<List<Comments>>> = MutableLiveData()
+    var myResponse = MutableLiveData<Response<Post>>()
+    var commentsResponse = MutableLiveData<Response<List<Comments>>>()
 
     fun getPostComments(id: Int) {
         viewModelScope.launch {
             val response = repository.getPostComments(id)
-            commentsResponse.value = response
+            commentsResponse.postValue(response)
         }
     }
 
     fun pushPost(post: Post) {
         viewModelScope.launch {
             val response = repository.pushPost(post)
-            myResponse.value = response
+            myResponse.postValue(response)
         }
     }
 }

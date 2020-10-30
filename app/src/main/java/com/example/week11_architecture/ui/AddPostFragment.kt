@@ -10,17 +10,9 @@ import androidx.navigation.Navigation
 import com.example.week11_architecture.R
 import kotlinx.android.synthetic.main.fragment_add_post.*
 
-class AddPostFragment : Fragment(), View.OnClickListener {
+class AddPostFragment : Fragment(R.layout.fragment_add_post), View.OnClickListener {
 
     lateinit var navController: NavController
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_post, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +22,8 @@ class AddPostFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        when (v!!.id) {
-            R.id.addPost -> navController.navigate(R.id.action_addPostFragment_to_postsFragment)
-            R.id.imageButton -> navController.navigate(R.id.action_addPostFragment_to_postsFragment)
+        when (v?.id) {
+            R.id.addPost, R.id.imageButton -> navController.navigate(R.id.action_addPostFragment_to_postsFragment)
         }
     }
 }
