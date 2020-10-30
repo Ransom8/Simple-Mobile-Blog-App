@@ -1,13 +1,12 @@
 package com.example.week11_architecture.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -19,8 +18,6 @@ import com.example.week11_architecture.models.CommentsViewModel
 import com.example.week11_architecture.models.CommentsViewModelFactory
 import com.example.week11_architecture.repository.Repository
 import kotlinx.android.synthetic.main.fragment_comments.*
-import kotlinx.android.synthetic.main.fragment_comments.view.*
-import kotlin.properties.Delegates
 
 /**
  * This is the activity class for the comments activity

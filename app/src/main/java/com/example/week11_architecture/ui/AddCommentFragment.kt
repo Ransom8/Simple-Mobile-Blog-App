@@ -1,18 +1,15 @@
 package com.example.week11_architecture.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.week11_architecture.R
 import com.example.week11_architecture.adapter.OnClick
-import com.example.week11_architecture.model.Post
 import kotlinx.android.synthetic.main.fragment_add_comment.*
 import kotlin.properties.Delegates
 
