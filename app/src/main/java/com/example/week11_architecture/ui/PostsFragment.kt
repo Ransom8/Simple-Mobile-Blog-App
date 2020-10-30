@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_posts.*
  * This is the activity class for the post activity
  */
 
-class PostsFragment : Fragment(), View.OnClickListener, OnClick {
+class PostsFragment : Fragment(R.layout.fragment_posts), View.OnClickListener, OnClick {
 
     lateinit var navController: NavController
     private lateinit var viewModel: MainViewModel
@@ -34,14 +34,6 @@ class PostsFragment : Fragment(), View.OnClickListener, OnClick {
         super.onCreate(savedInstanceState)
         navController = Navigation.findNavController(view)
         view.findViewById<FloatingActionButton>(R.id.addPostFAB).setOnClickListener(this)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_posts, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -67,10 +59,8 @@ class PostsFragment : Fragment(), View.OnClickListener, OnClick {
     }
 
     override fun onClick(v: View?) {
-        when (v!!.id) {
-            R.id.addPostFAB -> {
-                navController.navigate(R.id.action_postsFragment_to_addPostFragment)
-            }
+        when (v?.id) {
+            R.id.addPostFAB -> navController.navigate(R.id.action_postsFragment_to_addPostFragment)
         }
     }
 

@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_comments.*
  * This is the activity class for the comments activity
  */
 
-class CommentsFragment : Fragment(), View.OnClickListener {
+class CommentsFragment : Fragment(R.layout.fragment_comments), View.OnClickListener {
 
     lateinit var navController: NavController
     private lateinit var viewModel: CommentsViewModel
@@ -57,27 +57,18 @@ class CommentsFragment : Fragment(), View.OnClickListener {
         val viewModelFactory = CommentsViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(CommentsViewModel::class.java)
         viewModel.getPostComments(commentId)
-        viewModel.commentsResponse.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.commentsResponse.observe(viewLifecycleOwner, { response ->
             if (response.isSuccessful) {
                 commentsAdapter = CommentsAdapter(response.body()!!)
                 recyclerViewComments.adapter = commentsAdapter
-                recyclerViewComments.layoutManager = LinearLayoutManager(requireContext())
             } else {
                 Toast.makeText(requireContext(), "Hmmmm...That's odd", Toast.LENGTH_LONG).show()
             }
         })
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_comments, container, false)
-    }
-
     override fun onClick(v: View?) {
-        when (v!!.id) {
+        when (v?.id) {
             R.id.addCommentFAB -> {
                 navController = Navigation.findNavController(requireView())
                 val action = bundleOf("postName" to title, "id" to commentId)
